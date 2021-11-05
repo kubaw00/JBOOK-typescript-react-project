@@ -10,6 +10,13 @@ export const unpkgPathPlugin = () => {
         if (args.path === 'index.js') {
           return { path: args.path, namespace: 'a' };
         }
+        if (args.path.includes('./') || args.path.includes('../')) {
+          return {
+            namespace: 'a',
+            path: new URL(args.path, args.importer + '/').href,
+          };
+        }
+
         // else if (args.path === 'tiny-test-pkg') {
         //   return {
         //     path: 'https://unpkg.com/tiny-test-pkg@1.0.0/index.js',
