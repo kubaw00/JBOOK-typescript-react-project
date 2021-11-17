@@ -25,6 +25,13 @@ const App = () => {
       return;
     }
 
+    // const res = await ref.current.transform(input, {
+    //   loader: 'jsx',
+    //   target: 'es2015',
+    // });
+
+    // setCode(res.code);
+
     const result = await ref.current.build({
       entryPoints: ['index.js'],
       bundle: true,
