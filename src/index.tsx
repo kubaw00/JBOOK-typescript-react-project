@@ -6,7 +6,6 @@ import { fetchPlugin } from './plugin/fetch-plugin';
 
 const App = () => {
   const [input, setInput] = useState('');
-  const [code, setCode] = useState('');
 
   const ref = useRef<any>();
   const iframe = useRef<any>();
@@ -26,6 +25,8 @@ const App = () => {
     if (!ref.current) {
       return;
     }
+
+    iframe.current.srcdoc = html;
 
     // const res = await ref.current.transform(input, {
     //   loader: 'jsx',
@@ -78,8 +79,12 @@ const App = () => {
       <div>
         <button onClick={onClick}>Submit</button>
       </div>
-      <pre>{code}</pre>
-      <iframe ref={iframe} sandbox='allow-scripts' title='test' srcDoc={html} />
+      <iframe
+        ref={iframe}
+        sandbox='allow-scripts'
+        title='preview'
+        srcDoc={html}
+      />
     </div>
   );
 };
