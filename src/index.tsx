@@ -45,6 +45,7 @@ const App = () => {
     });
 
     setCode(result.outputFiles[0].text);
+    eval(result.outputFiles[0].text);
   };
 
   return (
@@ -57,8 +58,11 @@ const App = () => {
         <button onClick={onClick}>Submit</button>
       </div>
       <pre>{code}</pre>
+      <iframe sandbox='allow-same-origin' title='test' srcDoc={html} />
     </div>
   );
 };
+
+const html = `<div>Hello!</div>`;
 
 ReactDOM.render(<App />, document.querySelector('#root'));
