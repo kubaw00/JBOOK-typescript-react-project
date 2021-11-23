@@ -1,8 +1,12 @@
 import './code-editor.css';
+import './syntax.css';
 import React, { useRef } from 'react';
 import MonacoEditor, { EditorDidMount } from '@monaco-editor/react';
 import prettier from 'prettier';
 import parser from 'prettier/parser-babel';
+import { parse } from '@babel/parser';
+import traverse from '@babel/traverse';
+import Heightlighter from 'monaco-jsx-highlighter';
 
 interface CodeEditorProps {
   initialValue: string;
@@ -19,6 +23,24 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
     });
 
     monacoEditor.getModel()?.updateOptions({ tabSize: 2 });
+
+    const babelParse = (code: any) =>
+      parse(code, { sourceType: 'module', plugins: ['jsx'] });
+    const highlighter = new Heightlighter(
+      // @ts-ignore
+      window.monaco,
+      babelParse,
+      traverse,
+      monacoEditor
+    );
+
+    highlighter.highLightOnDidChangeModelContent(
+      100,
+      () => {},
+      () => {},
+      undefined,
+      () => {}
+    );
   };
 
   const onFormatClick = () => {
