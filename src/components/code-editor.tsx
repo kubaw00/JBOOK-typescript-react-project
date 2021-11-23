@@ -6,7 +6,7 @@ import prettier from 'prettier';
 import parser from 'prettier/parser-babel';
 import { parse } from '@babel/parser';
 import traverse from '@babel/traverse';
-import Heightlighter from 'monaco-jsx-highlighter';
+import Heighlighter from 'monaco-jsx-highlighter';
 
 interface CodeEditorProps {
   initialValue: string;
@@ -26,7 +26,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
 
     const babelParse = (code: any) =>
       parse(code, { sourceType: 'module', plugins: ['jsx'] });
-    const highlighter = new Heightlighter(
+    const highlighter = new Heighlighter(
       // @ts-ignore
       window.monaco,
       babelParse,
