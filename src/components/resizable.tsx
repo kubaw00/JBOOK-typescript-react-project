@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResizableBox } from 'react-resizable';
+import { ResizableBox, ResizableBoxProps } from 'react-resizable';
 import './resizable.css';
 
 interface ResizableProps {
@@ -7,6 +7,14 @@ interface ResizableProps {
 }
 
 const Resizable: React.FC<ResizableProps> = ({ direction, children }) => {
+  let resizableProps: ResizableBoxProps;
+
+  if (direction === 'horizontal') {
+    resizableProps = {};
+  } else {
+    resizableProps = {};
+  }
+
   return (
     <ResizableBox
       maxConstraints={[Infinity, window.innerHeight * 0.9]}
