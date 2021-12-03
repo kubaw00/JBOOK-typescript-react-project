@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react';
 
 interface PreviewProps {
   code: string;
+  err: string;
 }
 
 const html = `
@@ -36,12 +37,11 @@ const html = `
     </html>
   `;
 
-const Preview: React.FC<PreviewProps> = ({ code }) => {
+const Preview: React.FC<PreviewProps> = ({ code, err }) => {
   const iframe = useRef<any>();
 
   useEffect(() => {
     iframe.current.srcdoc = html;
-
     setTimeout(() => {
       iframe.current.contentWindow.postMessage(code, '*');
     }, 50);
@@ -55,6 +55,7 @@ const Preview: React.FC<PreviewProps> = ({ code }) => {
         title='preview'
         srcDoc={html}
       />
+      {err && <div className='preview-error'>{err}</div>}
     </div>
   );
 };
