@@ -1,5 +1,4 @@
 import {
-  Action,
   UpdateCellAction,
   DeleteCellAction,
   MoveCellAction,
