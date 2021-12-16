@@ -26,6 +26,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
 
     const babelParse = (code: any) =>
       parse(code, { sourceType: 'module', plugins: ['jsx'] });
+
     const highlighter = new Heighlighter(
       // @ts-ignore
       window.monaco,
