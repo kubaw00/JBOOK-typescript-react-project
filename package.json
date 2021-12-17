@@ -22,6 +22,7 @@
     "axios": "^0.23.0",
     "bulmaswatch": "^0.8.1",
     "esbuild-wasm": "0.8.27",
+    "framer-motion": "^4.1.17",
     "immer": "^9.0.7",
     "localforage": "^1.10.0",
     "monaco-editor": "^0.30.1",
