@@ -21,11 +21,14 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
 
     const orderedCells = order.map((id) => data[id]);
     const cumulativeCode = [
-      `const show = (value) =>{
+      `
+      import React from 'react';
+      import ReactDOM from 'react-dom';
+      const show = (value) =>{
         const root = document.querySelector("#root")
         console.log(value)
         if(typeof value === "object"){
-          if(value.type && value.props) {
+          if (value.$$typeof && value.props) {
           ReactDOM.render(value, root)
           } else {
             root.innerHTML = JSON.stringify(value)
