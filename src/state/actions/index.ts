@@ -11,6 +11,11 @@ export interface MoveCellAction {
   };
 }
 
+export interface SaveCellsErrorAction {
+  type: ActionType.SAVE_CELLS_ERROR;
+  payload: string;
+}
+
 export interface DeleteCellAction {
   type: ActionType.DELETE_CELL;
   payload: string;
@@ -73,4 +78,5 @@ export type Action =
   | BundleCompleteAction
   | FetchCellsAction
   | FetchCellsCompleteAction
-  | FetchCellsErrorAction;
+  | FetchCellsErrorAction
+  | SaveCellsErrorAction;
