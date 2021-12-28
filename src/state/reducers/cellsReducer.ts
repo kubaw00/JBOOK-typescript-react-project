@@ -24,6 +24,7 @@ const reducer = produce(
     switch (action.type) {
       case ActionType.SAVE_CELLS_ERROR:
         state.error = action.payload;
+        return state;
 
       case ActionType.FETCH_CELLS:
         state.loading = true;
